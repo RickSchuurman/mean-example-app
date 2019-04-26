@@ -8,9 +8,15 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 mongoose
-  .connect(
-    `mongodb://mean:${process.env.MONGO_PW}@${process.env.MONGO_URL}/mean`
-  )
+  // AWS mongodb
+  // .connect(
+  //   `mongodb://mean:${process.env.MONGO_PW}@${process.env.MONGO_URL}/mean`
+  // )
+
+
+  // local mongodb
+  .connect("mongodb://localhost:27017/mean")
+
   .then(() => {
     console.log("Connected to the database");
   })
