@@ -107,4 +107,4 @@ exports.getPosts = (req, res, next) => {
         message: "Fetching post failed!"
       });
     });
-}
+};

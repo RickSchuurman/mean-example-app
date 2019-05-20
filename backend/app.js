@@ -1,21 +1,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const environment = getEnv();
 
 const postsRoutes = require("./routes/post");
 const userRoutes = require("./routes/user");
 
 const app = express();
 
+
+function getEnv() {
+  const argv = require('yargs').argv;
+  switch (argv.env) {
+    case 'prd':
+      return `mongodb://mean:${process.env.MONGO_PW}@${process.env.MONGO_URL}/mean`;
+    case 'dev':
+    default:
+      return `mongodb://localhost:27017/mean`;
+  }
+}
+
 mongoose
-  // AWS mongodb
-  // .connect(
-  //   `mongodb://mean:${process.env.MONGO_PW}@${process.env.MONGO_URL}/mean`
-  // )
-
-
-  // local mongodb
-  .connect("mongodb://localhost:27017/mean")
+  .connect(environment)
 
   .then(() => {
     console.log("Connected to the database");
