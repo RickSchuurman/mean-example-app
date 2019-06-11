@@ -21,7 +21,7 @@ function getEnv() {
 }
 
 mongoose
-  .connect(environment)
+  .connect(environment,{useNewUrlParser: true})
 
   .then(() => {
     console.log("Connected to the database");
