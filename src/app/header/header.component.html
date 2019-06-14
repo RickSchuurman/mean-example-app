@@ -5,16 +5,16 @@
   <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
+      <a mat-button data-test="new-post" routerLink="/create" routerLinkActive="mat-accent">New Post</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="auth/login" routerLinkActive="mat-accent">Login</a>
+      <a mat-button data-test="login" routerLink="auth/login" routerLinkActive="mat-accent">Login</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="auth/signup" routerLinkActive="mat-accent">Signup</a>
+      <a mat-button data-test="signup" routerLink="auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <button mat-button (click)="onLogout()">Logout</button>
+      <button mat-button data-test="logout" (click)="onLogout()">Logout</button>
     </li>
   </ul>
 </mat-toolbar>
